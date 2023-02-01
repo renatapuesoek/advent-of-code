@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import {getMessageMarker, getPacketMarker} from "../day_6";
-import {getDirectoriesSizeSum} from "../day_7";
+import {getDirectoriesSizeSum, getSmallestDirToDelete} from "../day_7";
 
 const sampleData = `$ cd /
 $ ls
@@ -38,5 +38,16 @@ describe("Advent of Code Day 7", () => {
         const myInput = fs.readFileSync(path.resolve(__dirname, '../day_7.txt'), {encoding: "utf-8", flag: "r"})
         const actual = getDirectoriesSizeSum(myInput)
         expect(actual).toBe(1989474)
+    });
+
+    it("returns the size of the smallest directory to delete", () => {
+        const actual = getSmallestDirToDelete(sampleData)
+        expect(actual).toBe(24933642)
+    });
+
+    it("returns the size of the smallest directory to delete file", () => {
+        const myInput = fs.readFileSync(path.resolve(__dirname, '../day_7.txt'), {encoding: "utf-8", flag: "r"})
+        const actual = getSmallestDirToDelete(myInput)
+        expect(actual).toBe(1111607)
     });
 });
